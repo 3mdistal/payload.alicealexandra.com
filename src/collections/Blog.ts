@@ -12,6 +12,11 @@ export const Blogs: CollectionConfig = {
       required: true,
     },
     {
+      name: 'slug',
+      type: 'text',
+      required: true,
+    },
+    {
       name: 'author',
       type: 'text',
       required: true,
