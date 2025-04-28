@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     blogs: Blog;
+    ogInfo: OgInfo;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,6 +80,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     blogs: BlogsSelect<false> | BlogsSelect<true>;
+    ogInfo: OgInfoSelect<false> | OgInfoSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -161,6 +163,7 @@ export interface Media {
 export interface Blog {
   id: string;
   title: string;
+  slug: string;
   author: string;
   content: {
     root: {
@@ -177,6 +180,37 @@ export interface Blog {
     };
     [k: string]: unknown;
   };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Open Graph metadata for sharing pages on social media.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ogInfo".
+ */
+export interface OgInfo {
+  id: string;
+  /**
+   * The title that appears when the page is shared.
+   */
+  ogTitle: string;
+  /**
+   * The description that appears when the page is shared.
+   */
+  ogDescription: string;
+  /**
+   * The image that appears when the page is shared. Recommended size: 1200x630px.
+   */
+  ogImage: string | Media;
+  /**
+   * The type of object being shared (e.g., website, article).
+   */
+  ogType?: ('website' | 'article' | 'book' | 'profile') | null;
+  /**
+   * (Optional) The canonical URL for the page. Often derived automatically.
+   */
+  ogUrl?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -198,6 +232,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'blogs';
         value: string | Blog;
+      } | null)
+    | ({
+        relationTo: 'ogInfo';
+        value: string | OgInfo;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -283,8 +321,22 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface BlogsSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   author?: T;
   content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ogInfo_select".
+ */
+export interface OgInfoSelect<T extends boolean = true> {
+  ogTitle?: T;
+  ogDescription?: T;
+  ogImage?: T;
+  ogType?: T;
+  ogUrl?: T;
   updatedAt?: T;
   createdAt?: T;
 }
