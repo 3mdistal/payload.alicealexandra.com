@@ -180,8 +180,13 @@ export interface Blog {
     };
     [k: string]: unknown;
   };
+  /**
+   * Select the Open Graph metadata for this blog post.
+   */
+  ogInfo?: (string | null) | OgInfo;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * Open Graph metadata for sharing pages on social media.
@@ -324,8 +329,10 @@ export interface BlogsSelect<T extends boolean = true> {
   slug?: T;
   author?: T;
   content?: T;
+  ogInfo?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

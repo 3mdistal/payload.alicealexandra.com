@@ -5,6 +5,9 @@ export const Blogs: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
   },
+  versions: {
+    drafts: true,
+  },
   fields: [
     {
       name: 'title',
