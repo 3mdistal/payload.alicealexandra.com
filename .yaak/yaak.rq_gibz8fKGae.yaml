@@ -1,0 +1,26 @@
+type: http_request
+model: http_request
+id: rq_gibz8fKGae
+createdAt: 2025-04-28T10:03:55.869293
+updatedAt: 2025-04-28T10:18:09.230992
+workspaceId: wk_sxippzK5SN
+folderId: fl_fiPfJECNLc
+authentication: {}
+authenticationType: null
+body: {}
+bodyType: null
+description: ''
+headers:
+- enabled: true
+  name: Authorization
+  value: users API-Key ${[ PayloadUserAuth ]}
+  id: D3uV7VQAnX
+- enabled: true
+  name: ''
+  value: ''
+  id: 7DRkQxMifV
+method: GET
+name: Get All Blogs
+sortPriority: 0.0
+url: https://payload.alicealexandra.com/api/blogs
+urlParameters: []
