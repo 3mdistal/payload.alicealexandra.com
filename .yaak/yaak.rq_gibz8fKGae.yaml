@@ -9,12 +9,12 @@ authentication: {}
 authenticationType: null
 body: {}
 bodyType: null
-description: ''
+description: 'Fetch every Blog document for the public listing page.'
 headers:
-- enabled: true
-  name: Authorization
-  value: users API-Key ${[ PayloadUserAuth ]}
-  id: D3uV7VQAnX
+  - enabled: true
+    name: Authorization
+    value: users API-Key ${[ PayloadUserAuth ]}
+    id: D3uV7VQAnX
 method: GET
 name: Get All Blogs
 sortPriority: 0.0
