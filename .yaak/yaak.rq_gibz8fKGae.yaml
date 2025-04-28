@@ -11,14 +11,10 @@ body: {}
 bodyType: null
 description: ''
 headers:
-- enabled: true
-  name: Authorization
-  value: users API-Key ${[ PayloadUserAuth ]}
-  id: D3uV7VQAnX
-- enabled: true
-  name: ''
-  value: ''
-  id: 7DRkQxMifV
+  - enabled: true
+    name: Authorization
+    value: users API-Key ${[ PayloadUserAuth ]}
+    id: D3uV7VQAnX
 method: GET
 name: Get All Blogs
 sortPriority: 0.0
