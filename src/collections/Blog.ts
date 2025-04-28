@@ -26,5 +26,16 @@ export const Blogs: CollectionConfig = {
       type: 'richText',
       required: true,
     },
+    {
+      name: 'ogInfo',
+      label: 'OG Info',
+      type: 'relationship',
+      relationTo: 'ogInfo',
+      hasMany: false,
+      required: false,
+      admin: {
+        description: 'Select the Open Graph metadata for this blog post.',
+      },
+    },
   ],
 }
